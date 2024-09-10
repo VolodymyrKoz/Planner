@@ -201,16 +201,13 @@ li button:hover {
     gap: 10px;
 }
 
-.map-btn, .delete-btn, .download-btn, .edit-btn {
-    padding: 8px 12px;
+.map-btn, .delete-btn, .download-btn, .edit-btn, .reschedule-btn {
+    padding: 5px 10px;
     cursor: pointer;
     border: none;
     border-radius: 3px;
     transition: background-color 0.3s ease;
     color: #fff;
-    font-size: 14px;
-    width: 100px;
-    text-align: center;
 }
 
 .map-btn {
@@ -245,6 +242,14 @@ li button:hover {
     background-color: #7B1FA2;
 }
 
+.reschedule-btn {
+    background-color: #FF9800;  /* Orange color */
+}
+
+.reschedule-btn:hover {
+    background-color: #F57C00;  /* Darker orange for hover state */
+}
+
 /* Add icons to buttons */
 .map-btn::before {
     content: "\f3c5"; /* Map marker icon */
@@ -269,6 +274,13 @@ li button:hover {
 
 .edit-btn::before {
     content: "\f044"; /* Edit icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 5px;
+}
+
+.reschedule-btn::before {
+    content: "\f783";  /* Calendar-day icon */
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     margin-right: 5px;
@@ -319,10 +331,11 @@ li button:hover {
         gap: 5px;
     }
 
-    .map-btn, .download-btn, .delete-btn, .edit-btn {
+    .map-btn, .download-btn, .delete-btn, .edit-btn, .reschedule-btn {
+        flex: 1 0 calc(50% - 5px);
+        margin-bottom: 5px;
         padding: 6px 10px;
         font-size: 12px;
-        width: calc(50% - 5px);
     }
 
     .job-item.expanded .job-item-details {

@@ -133,6 +133,7 @@ function displayJobs() {
                     <button class="edit-btn">Edit</button>
                     <button class="map-btn">Map</button>
                     <button class="download-btn">Download</button>
+                    <button class="reschedule-btn">Reschedule</button>
                     <button class="delete-btn">Delete</button>
                 </div>
             </div>
@@ -167,6 +168,12 @@ function displayJobs() {
         editButton.onclick = (e) => {
             e.stopPropagation();
             editJob(index);
+        };
+        
+        const rescheduleButton = li.querySelector('.reschedule-btn');
+        rescheduleButton.onclick = (e) => {
+            e.stopPropagation();
+            rescheduleJob(index);
         };
         
         li.onclick = () => {
@@ -266,6 +273,18 @@ function updateJob(index) {
     jobForm.onsubmit = addJob;
 }
 
+function rescheduleJob(index) {
+    const job = jobs[index];
+    const newDate = prompt("Enter new date (YYYY-MM-DD):", job.date);
+    
+    if (newDate && newDate !== job.date) {
+        const rescheduledJob = {...job, date: newDate};
+        jobs.push(rescheduledJob);
+        saveJobs();
+        displayJobs();
+    }
+}
+
 showFormBtn.addEventListener('click', toggleForm);
 jobForm.addEventListener('submit', addJob);
 paymentTypeSelect.addEventListener('change', toggleCheckPaidField);
@@ -323,4 +342,15 @@ ${job.paymentType === 'check' ? `Status:   ${job.checkPaid ? 'Paid' : 'Not Paid'
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
+}
+function rescheduleJob(index) {
+    const job = jobs[index];
+    const newDate = prompt("Enter new date (YYYY-MM-DD):", job.date);
+    
+    if (newDate && newDate !== job.date) {
+        const rescheduledJob = {...job, date: newDate};
+        jobs.push(rescheduledJob);
+        saveJobs();
+        displayJobs();
+    }
 }
