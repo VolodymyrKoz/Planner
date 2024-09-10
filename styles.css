@@ -154,14 +154,17 @@ li button:hover {
     transition: all 0.3s ease;
 }
 
-.job-item:hover {
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+.job-item-header {
+    cursor: pointer;
 }
 
-.job-item-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.job-item-details {
+    display: none;
+    margin-top: 10px;
+}
+
+.job-item.expanded .job-item-details {
+    display: block;
 }
 
 .job-item-info {
@@ -170,7 +173,6 @@ li button:hover {
 }
 
 .job-item-details {
-    display: none;
     margin-top: 15px;
     padding-top: 15px;
     border-top: 1px solid #eee;
