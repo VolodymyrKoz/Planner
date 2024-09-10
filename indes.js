@@ -130,6 +130,7 @@ function displayJobs() {
                     <strong>${job.firstName} ${job.lastName}</strong> - ${job.date}
                 </div>
                 <div class="job-item-actions">
+                    <button class="edit-btn">Edit</button>
                     <button class="map-btn">Map</button>
                     <button class="download-btn">Download</button>
                     <button class="delete-btn">Delete</button>
@@ -162,6 +163,12 @@ function displayJobs() {
             downloadJobInfo(job);
         };
         
+        const editButton = li.querySelector('.edit-btn');
+        editButton.onclick = (e) => {
+            e.stopPropagation();
+            editJob(index);
+        };
+        
         li.onclick = () => {
             li.classList.toggle('expanded');
         };
@@ -184,6 +191,79 @@ function deleteJob(index) {
 function saveJobs() {
     localStorage.setItem('jobs', JSON.stringify(jobs));
     console.log('Jobs saved:', jobs); // Debug log
+}
+
+function editJob(index) {
+    const job = jobs[index];
+    
+    // Populate the form with the job details
+    document.getElementById('firstName').value = job.firstName;
+    lastNameInput.value = job.lastName === 'N/A' ? '' : job.lastName;
+    noLastNameCheckbox.checked = job.lastName === 'N/A';
+    toggleLastNameField();
+    
+    phoneInput.value = job.phone === 'N/A' ? '' : job.phone;
+    noPhoneCheckbox.checked = job.phone === 'N/A';
+    togglePhoneField();
+    
+    document.getElementById('address').value = job.address;
+    document.getElementById('cost').value = job.cost;
+    paymentTypeSelect.value = job.paymentType;
+    document.getElementById('serviceType').value = job.serviceType;
+    document.getElementById('jobDate').value = job.date;
+    
+    if (job.paymentType === 'check') {
+        checkPaidContainer.classList.remove('hidden');
+        document.getElementById('checkPaid').checked = job.checkPaid;
+    } else {
+        checkPaidContainer.classList.add('hidden');
+    }
+    
+    // Show the form
+    formContainer.classList.remove('hidden');
+    showFormBtn.textContent = 'Cancel';
+    
+    // Change the form submit button to "Update Job"
+    const submitButton = jobForm.querySelector('button[type="submit"]');
+    submitButton.textContent = 'Update Job';
+    
+    // Remove the existing submit event listener
+    jobForm.removeEventListener('submit', addJob);
+    
+    // Add a new submit event listener for updating the job
+    jobForm.onsubmit = (event) => {
+        event.preventDefault();
+        updateJob(index);
+    };
+}
+
+function updateJob(index) {
+    const updatedJob = {
+        firstName: document.getElementById('firstName').value,
+        lastName: noLastNameCheckbox.checked ? 'N/A' : lastNameInput.value,
+        phone: noPhoneCheckbox.checked ? 'N/A' : phoneInput.value,
+        address: document.getElementById('address').value,
+        cost: document.getElementById('cost').value,
+        paymentType: paymentTypeSelect.value,
+        serviceType: document.getElementById('serviceType').value,
+        date: document.getElementById('jobDate').value
+    };
+
+    if (updatedJob.paymentType === 'check') {
+        updatedJob.checkPaid = document.getElementById('checkPaid').checked;
+    }
+
+    jobs[index] = updatedJob;
+    saveJobs();
+    updatePreviousAddresses();
+    displayJobs();
+    jobForm.reset();
+    toggleForm();
+    
+    // Reset the form submit button and event listener
+    const submitButton = jobForm.querySelector('button[type="submit"]');
+    submitButton.textContent = 'Add Job';
+    jobForm.onsubmit = addJob;
 }
 
 showFormBtn.addEventListener('click', toggleForm);
