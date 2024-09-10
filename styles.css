@@ -405,6 +405,416 @@ button:hover {
 }
 
 /* Add icons to form inputs */
+#firstName, #lastName { padding-left: 30px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 448 512"><path fill="%23ccc" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/></svg>') no-repeat 5px center; }
+#phone { padding-left: 30px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 512 512"><path fill="%23ccc" d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z"/></svg>') no-repeat 5px center; }
+#address { padding-left: 30px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 576 512"><path fill="%23ccc" d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"/></svg>') no-repeat 5px center; }
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+#jobForm {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input, select, button {
+    padding: 10px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: #fff;
+    margin-bottom: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+li button {
+    background-color: #f44336;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+li button:hover {
+    background-color: #d32f2f;
+}
+
+#showFormBtn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#showFormBtn:hover {
+    background-color: #45a049;
+}
+
+#formContainer {
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+#checkPaidContainer {
+    margin-top: 10px;
+}
+
+#checkPaidContainer label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#lastNameContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#lastNameContainer input[type="text"] {
+    flex-grow: 1;
+}
+
+#lastNameContainer label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+
+#phoneContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#phoneContainer input[type="tel"] {
+    flex-grow: 1;
+}
+
+#phoneContainer label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+
+#addressContainer {
+    display: flex;
+    gap: 10px;
+}
+
+#address {
+    flex-grow: 1;
+}
+
+#previousAddresses {
+    width: 200px;
+}
+
+.job-item {
+    background-color: #fff;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.job-item-header {
+    cursor: pointer;
+}
+
+.job-item-details {
+    display: none;
+    margin-top: 10px;
+}
+
+.job-item.expanded .job-item-details {
+    display: block;
+}
+
+.job-item-info {
+    flex-grow: 1;
+    margin-right: 20px;
+}
+
+.job-item-details {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.job-item.expanded .job-item-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.job-item-details p {
+    margin: 0;
+}
+
+.job-item-details .full-width {
+    grid-column: 1 / -1;
+}
+
+.delete-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+    align-self: flex-start;
+}
+
+.delete-btn:hover {
+    background-color: #d32f2f;
+}
+
+.job-item-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.map-btn, .delete-btn {
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+
+.map-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.map-btn:hover {
+    background-color: #45a049;
+}
+
+.delete-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #d32f2f;
+}
+
+.download-btn {
+    background-color: #2196F3;  /* This is a nice blue color */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+
+.download-btn:hover {
+    background-color: #1E88E5;  /* A slightly darker blue for hover state */
+}
+
+/* Media query for mobile devices */
+@media screen and (max-width: 600px) {
+    .container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    #jobForm {
+        gap: 8px;
+    }
+
+    input, select, button {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    #showFormBtn {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+
+    .job-item {
+        padding: 10px;
+    }
+
+    .job-item-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .job-item-info {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .job-item-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .map-btn, .download-btn, .delete-btn {
+        padding: 5px 8px;
+        font-size: 12px;
+    }
+
+    .job-item.expanded .job-item-details {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .job-item-details p {
+        margin: 5px 0;
+    }
+
+    #lastNameContainer, #phoneContainer, #addressContainer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #lastNameContainer label, #phoneContainer label {
+        margin-top: 5px;
+    }
+
+    #previousAddresses {
+        width: 100%;
+        margin-top: 5px;
+    }
+}
+
+/* Button hover effects */
+button {
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Job item hover effect */
+.job-item {
+    transition: all 0.3s ease;
+}
+
+.job-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Animated expand/collapse for job details */
+.job-item-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.job-item.expanded .job-item-details {
+    max-height: 500px; /* Adjust this value as needed */
+}
+
+/* Add icons to buttons */
+.map-btn::before {
+    content: "\f3c5"; /* Map marker icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 5px;
+}
+
+.download-btn::before {
+    content: "\f019"; /* Download icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 5px;
+}
+
+.delete-btn::before {
+    content: "\f2ed"; /* Trash icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 5px;
+}
+
+/* Add a subtle animation to the form when it appears */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#formContainer {
+    animation: fadeIn 0.5s ease;
+}
+
+/* Add a pulsing effect to the Add New Job button */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+#showFormBtn {
+    animation: pulse 2s infinite;
+}
+
+#showFormBtn:hover {
+    animation: none;
+}
+
+/* Add icons to form inputs */
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
