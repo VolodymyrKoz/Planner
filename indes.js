@@ -129,7 +129,10 @@ function displayJobs() {
                 <div class="job-item-info">
                     <strong>${job.firstName} ${job.lastName}</strong> - ${job.date}
                 </div>
-                <button class="delete-btn">Delete</button>
+                <div class="job-item-actions">
+                    <button class="map-btn">Map</button>
+                    <button class="delete-btn">Delete</button>
+                </div>
             </div>
             <div class="job-item-details">
                 <p class="full-width"><strong>Address:</strong> ${job.address}</p>
@@ -144,6 +147,12 @@ function displayJobs() {
         deleteButton.onclick = (e) => {
             e.stopPropagation(); // Prevent the click from triggering the job item expansion
             deleteJob(index);
+        };
+
+        const mapButton = li.querySelector('.map-btn');
+        mapButton.onclick = (e) => {
+            e.stopPropagation(); // Prevent the click from triggering the job item expansion
+            openGoogleMaps(job.address);
         };
         
         li.onclick = () => {
