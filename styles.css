@@ -8,6 +8,39 @@ body {
     transition: background-color 0.3s ease;
 }
 
+/* Add this to your existing CSS */
+.job-item.completed {
+    background-color: #f0f0f0;
+    opacity: 0.7;
+}
+
+.job-item.completed .job-item-info {
+    text-decoration: line-through;
+}
+
+.done-btn {
+    background-color: #4CAF50;
+}
+
+.done-btn:hover {
+    background-color: #45a049;
+}
+
+.done-btn::before {
+    content: "\f00c"; /* Checkmark icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 5px;
+}
+
+.job-item.completed .done-btn {
+    background-color: #999;
+}
+
+.job-item.completed .done-btn:hover {
+    background-color: #888;
+}
+
 .container {
     width: 80%;
     max-width: 800px;

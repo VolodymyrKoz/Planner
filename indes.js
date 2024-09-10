@@ -70,7 +70,8 @@ function addJob(event) {
         cost: document.getElementById('cost').value,
         paymentType: paymentTypeSelect.value,
         serviceType: document.getElementById('serviceType').value,
-        date: document.getElementById('jobDate').value
+        date: document.getElementById('jobDate').value,
+        completed: false // Add this line
     };
 
     if (job.paymentType === 'check') {
@@ -118,18 +119,18 @@ function displayJobs() {
     const jobList = document.getElementById('jobList');
     jobList.innerHTML = '';
 
-    // Sort jobs by date, most recent first
     const sortedJobs = jobs.sort((a, b) => new Date(b.date) - new Date(a.date));
 
     sortedJobs.forEach((job, index) => {
         const li = document.createElement('li');
-        li.className = 'job-item';
+        li.className = `job-item ${job.completed ? 'completed' : ''}`;
         li.innerHTML = `
             <div class="job-item-header">
                 <div class="job-item-info">
                     <strong>${job.firstName} ${job.lastName}</strong> - ${job.date}
                 </div>
                 <div class="job-item-actions">
+                    <button class="done-btn">${job.completed ? 'Undo' : 'Done'}</button>
                     <button class="edit-btn">Edit</button>
                     <button class="map-btn">Map</button>
                     <button class="download-btn">Download</button>
@@ -174,6 +175,12 @@ function displayJobs() {
         rescheduleButton.onclick = (e) => {
             e.stopPropagation();
             rescheduleJob(index);
+        };
+        
+        const doneButton = li.querySelector('.done-btn');
+        doneButton.onclick = (e) => {
+            e.stopPropagation();
+            toggleJobCompletion(index);
         };
         
         li.onclick = () => {
@@ -253,7 +260,8 @@ function updateJob(index) {
         cost: document.getElementById('cost').value,
         paymentType: paymentTypeSelect.value,
         serviceType: document.getElementById('serviceType').value,
-        date: document.getElementById('jobDate').value
+        date: document.getElementById('jobDate').value,
+        completed: jobs[index].completed // Maintain the completed status
     };
 
     if (updatedJob.paymentType === 'check') {
@@ -283,6 +291,12 @@ function rescheduleJob(index) {
         saveJobs();
         displayJobs();
     }
+}
+
+function toggleJobCompletion(index) {
+    jobs[index].completed = !jobs[index].completed;
+    saveJobs();
+    displayJobs();
 }
 
 showFormBtn.addEventListener('click', toggleForm);
@@ -342,15 +356,4 @@ ${job.paymentType === 'check' ? `Status:   ${job.checkPaid ? 'Paid' : 'Not Paid'
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
-}
-function rescheduleJob(index) {
-    const job = jobs[index];
-    const newDate = prompt("Enter new date (YYYY-MM-DD):", job.date);
-    
-    if (newDate && newDate !== job.date) {
-        const rescheduledJob = {...job, date: newDate};
-        jobs.push(rescheduledJob);
-        saveJobs();
-        displayJobs();
-    }
 }
