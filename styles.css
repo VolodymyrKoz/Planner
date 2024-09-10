@@ -251,3 +251,77 @@ li button:hover {
 .download-btn:hover {
     background-color: #1E88E5;  /* A slightly darker blue for hover state */
 }
+
+/* Media query for mobile devices */
+@media screen and (max-width: 600px) {
+    .container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    #jobForm {
+        gap: 8px;
+    }
+
+    input, select, button {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    #showFormBtn {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+
+    .job-item {
+        padding: 10px;
+    }
+
+    .job-item-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .job-item-info {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .job-item-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .map-btn, .download-btn, .delete-btn {
+        padding: 5px 8px;
+        font-size: 12px;
+    }
+
+    .job-item.expanded .job-item-details {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .job-item-details p {
+        margin: 5px 0;
+    }
+
+    #lastNameContainer, #phoneContainer, #addressContainer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #lastNameContainer label, #phoneContainer label {
+        margin-top: 5px;
+    }
+
+    #previousAddresses {
+        width: 100%;
+        margin-top: 5px;
+    }
+}
