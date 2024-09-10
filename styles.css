@@ -196,46 +196,33 @@ li button:hover {
     grid-column: 1 / -1;
 }
 
-.delete-btn {
-    background-color: #f44336;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 3px;
-    transition: background-color 0.3s ease;
-    align-self: flex-start;
-}
-
-.delete-btn:hover {
-    background-color: #d32f2f;
-}
-
 .job-item-actions {
     display: flex;
     gap: 10px;
 }
 
-.map-btn, .delete-btn {
-    padding: 5px 10px;
+.map-btn, .delete-btn, .download-btn, .edit-btn {
+    padding: 8px 12px;
     cursor: pointer;
     border: none;
     border-radius: 3px;
     transition: background-color 0.3s ease;
+    color: #fff;
+    font-size: 14px;
+    width: 100px;
+    text-align: center;
 }
 
 .map-btn {
-    background-color: var(--primary-color);
-    color: #fff;
+    background-color: #4CAF50;
 }
 
 .map-btn:hover {
-    background-color: var(--primary-color-hover);
+    background-color: #45a049;
 }
 
 .delete-btn {
     background-color: #f44336;
-    color: #fff;
 }
 
 .delete-btn:hover {
@@ -243,17 +230,48 @@ li button:hover {
 }
 
 .download-btn {
-    background-color: #2196F3;  /* This is a nice blue color */
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 3px;
-    transition: background-color 0.3s ease;
+    background-color: #2196F3;
 }
 
 .download-btn:hover {
-    background-color: #1E88E5;  /* A slightly darker blue for hover state */
+    background-color: #1E88E5;
+}
+
+.edit-btn {
+    background-color: #9C27B0;
+}
+
+.edit-btn:hover {
+    background-color: #7B1FA2;
+}
+
+/* Add icons to buttons */
+.map-btn::before {
+    content: "\f3c5"; /* Map marker icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 5px;
+}
+
+.download-btn::before {
+    content: "\f019"; /* Download icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 5px;
+}
+
+.delete-btn::before {
+    content: "\f2ed"; /* Trash icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 5px;
+}
+
+.edit-btn::before {
+    content: "\f044"; /* Edit icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 5px;
 }
 
 /* Media query for mobile devices */
@@ -301,9 +319,10 @@ li button:hover {
         gap: 5px;
     }
 
-    .map-btn, .download-btn, .delete-btn {
-        padding: 5px 8px;
+    .map-btn, .download-btn, .delete-btn, .edit-btn {
+        padding: 6px 10px;
         font-size: 12px;
+        width: calc(50% - 5px);
     }
 
     .job-item.expanded .job-item-details {
@@ -749,17 +768,17 @@ li button:hover {
     gap: 10px;
 }
 
-.map-btn, .delete-btn {
+.map-btn, .delete-btn, .download-btn, .edit-btn {
     padding: 5px 10px;
     cursor: pointer;
     border: none;
     border-radius: 3px;
     transition: background-color 0.3s ease;
+    color: #fff;
 }
 
 .map-btn {
     background-color: #4CAF50;
-    color: white;
 }
 
 .map-btn:hover {
@@ -768,7 +787,6 @@ li button:hover {
 
 .delete-btn {
     background-color: #f44336;
-    color: white;
 }
 
 .delete-btn:hover {
@@ -776,17 +794,48 @@ li button:hover {
 }
 
 .download-btn {
-    background-color: #2196F3;  /* This is a nice blue color */
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 3px;
-    transition: background-color 0.3s ease;
+    background-color: #2196F3;
 }
 
 .download-btn:hover {
-    background-color: #1E88E5;  /* A slightly darker blue for hover state */
+    background-color: #1E88E5;
+}
+
+.edit-btn {
+    background-color: #9C27B0;  /* Purple color */
+}
+
+.edit-btn:hover {
+    background-color: #7B1FA2;  /* Darker purple for hover state */
+}
+
+/* Add icons to buttons */
+.map-btn::before {
+    content: "\f3c5"; /* Map marker icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 5px;
+}
+
+.download-btn::before {
+    content: "\f019"; /* Download icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 5px;
+}
+
+.delete-btn::before {
+    content: "\f2ed"; /* Trash icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 5px;
+}
+
+.edit-btn::before {
+    content: "\f044"; /* Edit icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 5px;
 }
 
 /* Media query for mobile devices */
