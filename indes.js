@@ -131,6 +131,7 @@ function displayJobs() {
                 </div>
                 <div class="job-item-actions">
                     <button class="map-btn">Map</button>
+                    <button class="download-btn">Download</button>
                     <button class="delete-btn">Delete</button>
                 </div>
             </div>
@@ -153,6 +154,12 @@ function displayJobs() {
         mapButton.onclick = (e) => {
             e.stopPropagation(); // Prevent the click from triggering the job item expansion
             openGoogleMaps(job.address);
+        };
+        
+        const downloadButton = li.querySelector('.download-btn');
+        downloadButton.onclick = (e) => {
+            e.stopPropagation();
+            downloadJobInfo(job);
         };
         
         li.onclick = () => {
@@ -190,3 +197,26 @@ updatePreviousAddresses();
 displayJobs();
 
 google.maps.event.addDomListener(window, 'load', initAutocomplete);
+
+function downloadJobInfo(job) {
+    const jobDetails = `
+Job Details:
+Name: ${job.firstName} ${job.lastName}
+Date: ${job.date}
+Address: ${job.address}
+Phone: ${job.phone}
+Service: ${job.serviceType}
+Cost: $${job.cost}
+Payment: ${job.paymentType}${job.paymentType === 'check' ? (job.checkPaid ? ' (Paid)' : ' (Not Paid)') : ''}
+    `.trim();
+
+    const blob = new Blob([jobDetails], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `Job_${job.firstName}_${job.lastName}_${job.date}.txt`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+}
