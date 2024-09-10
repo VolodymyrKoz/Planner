@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grass Cutters Planner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Grass Cutters Planner</h1>
+        <button id="showFormBtn">Add New Job</button>
+        <div id="formContainer" class="hidden">
+            <form id="jobForm">
+                <input type="text" id="firstName" placeholder="First Name" required>
+                <div id="lastNameContainer">
+                    <input type="text" id="lastName" placeholder="Last Name">
+                    <label>
+                        <input type="checkbox" id="noLastName"> N/A
+                    </label>
+                </div>
+                <div id="phoneContainer">
+                    <input type="tel" id="phone" placeholder="Phone Number">
+                    <label>
+                        <input type="checkbox" id="noPhone"> N/A
+                    </label>
+                </div>
+                <div id="addressContainer">
+                    <input type="text" id="address" placeholder="Address" required>
+                    <select id="previousAddresses" class="hidden">
+                        <option value="">Select a previous address</option>
+                    </select>
+                </div>
+                <input type="number" id="cost" placeholder="Cost" required>
+                <select id="paymentType" required>
+                    <option value="">Select Payment Type</option>
+                    <option value="cash">Cash</option>
+                    <option value="card">Card</option>
+                    <option value="check">Check</option>
+                </select>
+                <div id="checkPaidContainer" class="hidden">
+                    <label>
+                        <input type="checkbox" id="checkPaid"> Check already paid
+                    </label>
+                </div>
+                <select id="serviceType" required>
+                    <option value="">Select Service Type</option>
+                    <option value="mowing">Mowing</option>
+                    <option value="edging">Edging</option>
+                    <option value="trimming">Trimming</option>
+                    <option value="fullService">Full Service</option>
+                </select>
+                <input type="date" id="jobDate" required>
+                <button type="submit">Add Job</button>
+            </form>
+        </div>
+        <ul id="jobList"></ul>
+    </div>
+    <script src="indes.js"></script>
+</body>
+</html>

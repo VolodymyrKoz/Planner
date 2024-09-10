@@ -1,0 +1,237 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+#jobForm {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input, select, button {
+    padding: 10px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: #fff;
+    margin-bottom: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+li button {
+    background-color: #f44336;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+li button:hover {
+    background-color: #d32f2f;
+}
+
+#showFormBtn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#showFormBtn:hover {
+    background-color: #45a049;
+}
+
+#formContainer {
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+#checkPaidContainer {
+    margin-top: 10px;
+}
+
+#checkPaidContainer label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#lastNameContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#lastNameContainer input[type="text"] {
+    flex-grow: 1;
+}
+
+#lastNameContainer label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+
+#phoneContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#phoneContainer input[type="tel"] {
+    flex-grow: 1;
+}
+
+#phoneContainer label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+
+#addressContainer {
+    display: flex;
+    gap: 10px;
+}
+
+#address {
+    flex-grow: 1;
+}
+
+#previousAddresses {
+    width: 200px;
+}
+
+.job-item {
+    background-color: #fff;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.job-item:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.job-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.job-item-info {
+    flex-grow: 1;
+    margin-right: 20px;
+}
+
+.job-item-details {
+    display: none;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.job-item.expanded .job-item-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.job-item-details p {
+    margin: 0;
+}
+
+.job-item-details .full-width {
+    grid-column: 1 / -1;
+}
+
+.delete-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+    align-self: flex-start;
+}
+
+.delete-btn:hover {
+    background-color: #d32f2f;
+}
+
+.job-item-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.map-btn, .delete-btn {
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+
+.map-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.map-btn:hover {
+    background-color: #45a049;
+}
+
+.delete-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #d32f2f;
+}
