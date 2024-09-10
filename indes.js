@@ -200,14 +200,38 @@ google.maps.event.addDomListener(window, 'load', initAutocomplete);
 
 function downloadJobInfo(job) {
     const jobDetails = `
+===============================
+        GRASS CUTTERS JOB
+===============================
+
+Customer Information:
+---------------------
+Name:     ${job.firstName} ${job.lastName}
+Phone:    ${job.phone}
+Address:  ${job.address}
+
 Job Details:
-Name: ${job.firstName} ${job.lastName}
-Date: ${job.date}
-Address: ${job.address}
-Phone: ${job.phone}
-Service: ${job.serviceType}
-Cost: $${job.cost}
-Payment: ${job.paymentType}${job.paymentType === 'check' ? (job.checkPaid ? ' (Paid)' : ' (Not Paid)') : ''}
+------------
+Date:     ${job.date}
+Service:  ${job.serviceType}
+Cost:     $${job.cost}
+
+Payment Information:
+--------------------
+Type:     ${job.paymentType}
+${job.paymentType === 'check' ? `Status:   ${job.checkPaid ? 'Paid' : 'Not Paid'}` : ''}
+
+===============================
+        IMPORTANT NOTES
+===============================
+1. Please arrive on time
+2. Bring all necessary equipment
+3. Contact customer if running late
+4. Ensure quality service
+
+===============================
+   Thank you for your business!
+===============================
     `.trim();
 
     const blob = new Blob([jobDetails], { type: 'text/plain' });
